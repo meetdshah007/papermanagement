@@ -1,0 +1,46 @@
+page-index {
+  html, body {
+    font-size: 62.5%;
+    height: 100%;
+    width:100%;
+    overflow: scroll;
+    background-image: url('../assets/imgs/Paper_BG.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .dash-menu {
+    width: 30%;
+    float: left;
+
+    margin: 33px;
+    margin-right: 33px;
+
+
+  }
+  .dash-main {
+    width: 30%;
+    float: left;
+
+    margin-right: 33px;
+    margin:33px;
+
+  }
+  .boxed {
+    border: 1px solid green ;
+  }
+  p{
+    font-size: 15px;
+    text-align:center;
+    font-family:Open Sans;
+    letter-spacing:1px;
+    color:#488aff;
+    font-weight: bold;
+  }
+
+  img{
+    width:30px;
+
+  }
+
+}

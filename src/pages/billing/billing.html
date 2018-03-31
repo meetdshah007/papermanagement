@@ -1,0 +1,51 @@
+<!--
+  Generated template for the BillingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+
+    <ion-title>
+      <ion-buttons left>
+        <button ion-button icon-only (click)="dismiss()">
+
+          <ion-icon name="ios-arrow-back"></ion-icon>
+          <p style="font-size: 17px">Billing</p>
+        </button>
+
+      </ion-buttons>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+<div class="container">
+
+  <div style="height: 100px" align="center">
+  </div>
+
+  <div class="dash-menu" align="center">
+    <ion-icon name="car" style=" width:100px; height:100px;   background-color: #51a7e8;  padding: 30px; border-radius: 100%; font-size: 40px;color:white" (click)="pay()"></ion-icon>
+    <p>PAY</p>
+  </div>
+  <div class="dash-menu" align="center">
+    <ion-icon name="phone-portrait" style="width:100px; height:100px;   background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white" (click)="paid()"></ion-icon>
+    <p>PAID</p>
+  </div>
+
+  <ion-footer>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary"><ion-icon name="ios-grid-outline"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab><ion-icon color="primary" name="md-person"></ion-icon></button>
+      <button ion-fab><ion-icon color="primary" name="md-paper"></ion-icon></button>
+      <button ion-fab><ion-icon color="primary" name="ios-copy-outline"></ion-icon></button>
+      <button ion-fab><ion-icon color="primary" name="ios-create-outline"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-footer>

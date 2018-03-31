@@ -1,0 +1,67 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <meta charset="UTF-8">
+
+  <ion-navbar color="primary">
+
+    <ion-title>
+      <ion-buttons left>
+        <button ion-button icon-only (click)="dismiss()">
+
+      <ion-icon name="ios-arrow-back"></ion-icon>
+          <p style="font-size: 17px">Register</p>
+        </button>
+
+      </ion-buttons>
+       </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+
+      <ion-label floating> <ion-icon name="person"></ion-icon> Full name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating> <ion-icon name="md-call"></ion-icon> Mobile No </ion-label>
+      <ion-input type="Number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating> <ion-icon name="md-call"></ion-icon> Elternet Mobile No</ion-label>
+      <ion-input type="Number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating> <ion-icon name="md-mail"></ion-icon>  Email</ion-label>
+      <ion-input type="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="md-compass"></ion-icon>  Address</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating><ion-icon name="md-pin"></ion-icon>  Pincode</ion-label>
+      <ion-input type="Number"></ion-input>
+    </ion-item>
+
+    </ion-list>
+  <ion-list text-center>
+    <button ion-button round style="width: 175px" (click)="submit()">Next</button>
+
+  </ion-list>
+
+</ion-content>
