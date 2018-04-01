@@ -1,51 +1,34 @@
-
-
-<!DOCTYPE html>
-<html lang="en" >
-
 <ion-header>
   <meta charset="UTF-8">
-
   <ion-navbar color="primary">
     <ion-title>Paper Management System</ion-title>
   </ion-navbar>
-
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1.0">
-
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-
 </ion-header>
-<body>
-
-<div class="container">
-
-  <div style="height: 100px" align="center">
-  </div>
-
-  <div class="dash-menu" align="center">
-    <ion-icon name="car" style=" width:100px; height:100px;   background-color: #51a7e8;  padding: 30px; border-radius: 100%; font-size: 40px;color:white" (click)="register()"></ion-icon>
-    <p>CUSTOMER</p>
-  </div>
-  <div class="dash-menu" align="center">
-    <ion-icon name="phone-portrait" style="width:100px; height:100px;   background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white" (click)="paper()"></ion-icon>
-    <p>PAPERS</p>
-  </div>
-
-  <div class="dash-menu" align="center">
-    <ion-icon name="phone-portrait" style="width:100px; height:100px;  background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
-      (click)="(billing())"></ion-icon>
-    <p>BILLING</p>
-  </div>
-
-  <div class="dash-menu" align="center">
-    <ion-icon name="settings" style="width:100px; height:100px;  background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white" (click)="(delivery())"></ion-icon>
-    <p>DELIVERY</p>
-  </div>
-
-
-
-
-
-</div>
-</body>
-</html>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 text-center>
+        <ion-icon name="car" style=" width:100px; height:100px;   background-color: #51a7e8;  padding: 30px; border-radius: 100%; font-size: 40px;color:white"
+          (click)="register()"></ion-icon>
+        <p>CUSTOMER</p>
+      </ion-col>
+      <ion-col col-6>
+        <ion-icon name="phone-portrait" style="width:100px; height:100px;   background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
+          (click)="paper()"></ion-icon>
+        <p>PAPERS</p>
+      </ion-col>
+      <ion-col col-6>
+        <ion-icon name="phone-portrait" style="width:100px; height:100px;  background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
+          (click)="(billing())"></ion-icon>
+        <p>BILLING</p>
+      </ion-col>
+      <ion-col col-6>
+        <ion-icon name="settings" style="width:100px; height:100px;  background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
+          (click)="(delivery())"></ion-icon>
+        <p>DELIVERY</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

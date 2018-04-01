@@ -20,18 +20,14 @@ import { ServicesProvider } from '../../providers/services/services';
 export class LoginPage {
   login: FormGroup;
   submited: boolean = false;
-  
-  
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public services: ServicesProvider,
-    public formBuilder: FormBuilder    
+    public formBuilder: FormBuilder
   ) {
-    this.services.getLogged().then((res) => {
-      if (res) this.navCtrl.setRoot(IndexPage);
-    });
-
     this.login = formBuilder.group({
       username: [null, Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])]
@@ -46,10 +42,19 @@ export class LoginPage {
       this.submited = true;
       return false;
     }
-    
-    this.services.post('login.php', this.login.value).subscribe((res) => {
-      console.log("== res ==>", res);
+
+    this.services.post('login.php', this.login.value).subscribe((res: any) => {
+      if (res.success) {
+        this.services.setUserData(res.data);
+        this.services.setLogged();
+        this.navCtrl.setRoot (IndexPage);        
+      }else{
+        this.services.createWaring('Error',res.error);
+      }
+    }, (err) => {
+      console.log("Error", err);
+      const errMsg = err.message || 'Something is wrong with the network.';
+      this.services.createWaring('Error', errMsg);
     });
-    //this.navCtrl.setRoot (IndexPage);
   }
 }

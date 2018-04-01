@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar color="primary">
     <ion-title>
       Paper Management System
@@ -9,29 +8,28 @@
 
 
 <ion-content padding>
-
   <h2 style="font-size: 15px; text-align: center">Welcome to Demo</h2>
-  <form name="login" [formGroup]="login" novalidate (ngSubmit)="doLogin()">  
-  <ion-list>
-    <ion-item>
-      <ion-label floating> Username</ion-label>
-      <ion-input type="text"  formControlName="username"></ion-input>
-    </ion-item>
-    <ion-item class=" error-item" *ngIf="(login.controls.username.touched && !login.controls.username.valid) || (submited && !login.controls.username.valid)">
-      <span *ngIf="login.controls.username.errors.required">Username is required</span>
-    </ion-item>
+  <form name="login" [formGroup]="login" novalidate (ngSubmit)="doLogin()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating> Username</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(login.controls.username.touched && !login.controls.username.valid) || (submited && !login.controls.username.valid)">
+        <span *ngIf="login.controls.username.errors.required">Username is required</span>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"  formControlName="password"></ion-input>
-    </ion-item>
-    <ion-item class=" error-item" *ngIf="(login.controls.password.touched && !login.controls.password.valid) || (submited && !login.controls.password.valid)">
-      <span *ngIf="login.controls.password.errors.required">Password is required</span>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(login.controls.password.touched && !login.controls.password.valid) || (submited && !login.controls.password.valid)">
+        <span *ngIf="login.controls.password.errors.required">Password is required</span>
+      </ion-item>
 
-  </ion-list>
-  <ion-list text-center>
-    <button ion-button round full>Login</button>
-
-  </ion-list>
+    </ion-list>
+    <ion-list text-center>
+      <button ion-button round full>Login</button>
+    </ion-list>
+  </form>
 </ion-content>
