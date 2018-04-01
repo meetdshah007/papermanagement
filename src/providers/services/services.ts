@@ -105,4 +105,12 @@ export class ServicesProvider {
     return false;
   }
 
+  presentToast(msg: string){
+    let toast = this.toastCtrl.create({
+      duration: 3000,
+      position: 'top',
+      message: msg
+    });
+    toast.present();
+  }
 }

@@ -26,10 +26,6 @@ export class ContactPage {
   ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactPage');
-  }
-
   ionViewWillEnter(){
     this.services.getUserData().then(data=>{
       this.userId = data.user_id;
@@ -40,7 +36,6 @@ export class ContactPage {
 
   getCustomerList(){
     this.services.get(`customers/getcustomerlist.php?user_id=${this.userId}`).subscribe((res:any)=>{
-      console.log("=== res ===>", res);
       if(res.success){
         this.customerList = res.data.customer_list || [];
       }else{
@@ -58,7 +53,6 @@ export class ContactPage {
   }
 
   onEdit(cust: any){
-    console.log("== Selected customer =-===>", cust);
     this.navCtrl.push(RegisterPage, cust);
   }
 
@@ -68,8 +62,9 @@ export class ContactPage {
       user_id: this.userId
     };
     this.services.post(`customers/removecustomer.php`,data).subscribe((res:any)=>{
-      console.log("=== delete res ===>", res);
-    })
+      this.services.presentToast(`Customer account is deleted successfully.`);
+      this.getCustomerList();
+    });
   }
 
   addcustomer(){

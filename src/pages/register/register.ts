@@ -22,6 +22,7 @@ export class RegisterPage {
   custForm: FormGroup;
   apiUrl: string = "insertcustomer.php";
   submited: boolean = false;
+  isEdit: boolean = false;
   userId: string;
   custData: object = {
     name: '',
@@ -47,23 +48,20 @@ export class RegisterPage {
   }
 
   ionViewWillEnter(){
-    console.log("=== Params Data ===>", this.navParams);
     let custData = this.navParams.data;
     this.services.getUserData().then(data=>{
       this.userId = data.user_id;
-      if(custData){
+      if(Object.keys(custData).length){
         this.custData = custData;
         this.title = "Profile";
-        this.apiUrl = "updatecustomer.php"
+        this.apiUrl = "updatecustomer.php";
+        this.isEdit = true;
       }else{
         this.title = "Add Customer";
-        this.apiUrl = "insertcustomer.php"
+        this.apiUrl = "insertcustomer.php";
+        this.isEdit = false;
       }
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
   }
 
   dismiss(){
@@ -76,13 +74,14 @@ export class RegisterPage {
       return false;
     }
 
-    
-
-    this.services.post(this.apiUrl, this.custForm.value).subscribe((res: any) => {
+    this.custForm.value['user_id'] = this.userId;
+    if(this.isEdit){
+      this.custForm.value['customer_id'] = this.custData['customer_id'];      
+    }
+    this.services.post(`customers/${this.apiUrl}`, this.custForm.value).subscribe((res: any) => {
       if (res.success) {
-        this.services.setUserData(res.data);
-        this.services.setLogged();
-        this.navCtrl.setRoot (IndexPage);        
+        this.services.presentToast(`${this.isEdit? 'Profile update' : 'Customer added'} successfully.`)
+        this.dismiss();
       }else{
         this.services.createWaring('Error',res.error);
       }
@@ -91,8 +90,5 @@ export class RegisterPage {
       const errMsg = err.message || 'Something is wrong with the network.';
       this.services.createWaring('Error', errMsg);
     });
-
-    this.navCtrl.setRoot(InsertpaperPage);
-
   }
 }
