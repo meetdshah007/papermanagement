@@ -1,19 +1,26 @@
 page-index {
-  background-image: url('../assets/imgs/Paper_BG.jpg');
+  background-image: url(../assets/imgs/Paper_BG.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  p{
-    font-size: 15px;
-    text-align:center;
-    font-family:Open Sans;
-    letter-spacing:1px;
-    color:#488aff;
-    font-weight: bold;
-  }
+  .theme-btn{
+    background: $themePrimary;
+    padding: 1.2em;
+    color: white;
 
-  img{
-    width:30px;
-  }
+    .icon,
+    label{
+      margin: 0 auto;
+    }
 
+    .icon{
+      width: auto;
+      height: 70px;
+      margin-bottom: 12px;
+    }
+
+    label{
+      font-size: 1.5rem;
+    }
+  }
 }

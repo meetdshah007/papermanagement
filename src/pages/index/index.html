@@ -1,33 +1,61 @@
 <ion-header>
   <meta charset="UTF-8">
   <ion-navbar color="primary">
-    <ion-title>Paper Management System</ion-title>
+    <ion-title>Dashboard</ion-title>
   </ion-navbar>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1.0">
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 </ion-header>
-<ion-content>
-  <ion-grid>
+<ion-content padding>
+  <ion-grid class="dashboard">
     <ion-row>
-      <ion-col col-6 text-center>
-        <ion-icon name="car" style=" width:100px; height:100px;   background-color: #51a7e8;  padding: 30px; border-radius: 100%; font-size: 40px;color:white"
-          (click)="register()"></ion-icon>
-        <p>CUSTOMER</p>
+      <ion-col col-6 text-center class="button-wrapper">
+        <ion-grid class="theme-btn" (click)="register()">
+          <ion-row>
+            <img src="assets/imgs/customer.png" class="icon">
+          </ion-row>
+          <ion-row>
+            <label>
+              CUSTOMER
+            </label>
+          </ion-row>
+        </ion-grid>
       </ion-col>
-      <ion-col col-6>
-        <ion-icon name="phone-portrait" style="width:100px; height:100px;   background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
-          (click)="paper()"></ion-icon>
-        <p>PAPERS</p>
+      <ion-col col-6 text-center class="button-wrapper">
+        <ion-grid class="theme-btn" (click)="paper()">
+          <ion-row>
+            <img src="assets/imgs/paper.png" class="icon">
+          </ion-row>
+          <ion-row>
+            <label>
+              PAPERS
+            </label>
+          </ion-row>
+        </ion-grid>
       </ion-col>
-      <ion-col col-6>
-        <ion-icon name="phone-portrait" style="width:100px; height:100px;  background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
-          (click)="(billing())"></ion-icon>
-        <p>BILLING</p>
+      <ion-col col-6 text-center class="button-wrapper">
+        <ion-grid class="theme-btn" (click)="billing()">
+          <ion-row>
+            <img src="assets/imgs/billing.png" class="icon">
+          </ion-row>
+          <ion-row>
+            <label>
+              BILLING
+            </label>
+          </ion-row>
+        </ion-grid>
       </ion-col>
-      <ion-col col-6>
-        <ion-icon name="settings" style="width:100px; height:100px;  background-color: #51a7e8; padding:30px; border-radius: 100%; font-size: 40px;color:white"
-          (click)="(delivery())"></ion-icon>
-        <p>DELIVERY</p>
+      <ion-col col-6 text-center class="button-wrapper">
+        <ion-grid class="theme-btn" (click)="delivery()">
+          <ion-row>
+            <img src="assets/imgs/delivery.png" class="icon">
+          </ion-row>
+          <ion-row>
+            <label>
+              DELIVERY
+            </label>
+          </ion-row>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>
