@@ -10,58 +10,62 @@
   <ion-navbar color="primary">
 
     <ion-title>
-      <ion-buttons left>
-        <button ion-button icon-only (click)="dismiss()">
-
-      <ion-icon name="ios-arrow-back"></ion-icon>
-          <p style="font-size: 17px">Register</p>
-        </button>
-
-      </ion-buttons>
-       </ion-title>
+      {{title}}
+    </ion-title>
 
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <form name="custForm" [formGroup]="custForm" novalidate (ngSubmit)="submit()">
+    <ion-list>
 
-  <ion-list>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person"></ion-icon> Full name</ion-label>
+        <ion-input type="text" [(ngModel)]="custData.name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(custForm.controls.name.touched && !custForm.controls.name.valid) || (submited && !custForm.controls.name.valid)">
+        <span *ngIf="custForm.controls.name.errors.required">Full Name is required</span>
+      </ion-item>
 
-    <ion-item>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="md-call"></ion-icon> Mobile No </ion-label>
+        <ion-input type="Number" [(ngModel)]="custData.mobile" formControlName="mobile"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(custForm.controls.mobile.touched && !custForm.controls.mobile.valid) || (submited && !custForm.controls.mobile.valid)">
+        <span *ngIf="custForm.controls.mobile.errors.required">Mobile is required</span>
+      </ion-item>
 
-      <ion-label floating> <ion-icon name="person"></ion-icon> Full name</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="md-call"></ion-icon> Alternate Mobile No</ion-label>
+        <ion-input type="Number" [(ngModel)]="custData.alt_contact" formControlName="alt_contact"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating> <ion-icon name="md-call"></ion-icon> Mobile No </ion-label>
-      <ion-input type="Number"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="md-mail"></ion-icon> Email</ion-label>
+        <ion-input type="Email" [(ngModel)]="custData.email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(custForm.controls.email.touched && !custForm.controls.email.valid) || (submited && !custForm.controls.email.valid)">
+        <span *ngIf="custForm.controls.email.errors.required">Email is required</span>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating> <ion-icon name="md-call"></ion-icon> Elternet Mobile No</ion-label>
-      <ion-input type="Number"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating> <ion-icon name="md-mail"></ion-icon>  Email</ion-label>
-      <ion-input type="Email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating><ion-icon name="md-compass"></ion-icon>  Address</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating><ion-icon name="md-pin"></ion-icon>  Pincode</ion-label>
-      <ion-input type="Number"></ion-input>
-    </ion-item>
-
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="md-compass"></ion-icon> Address</ion-label>
+        <ion-input type="text" [(ngModel)]="custData.address" formControlName="address"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(custForm.controls.address.touched && !custForm.controls.address.valid) || (submited && !custForm.controls.address.valid)">
+        <span *ngIf="custForm.controls.address.errors.required">Address is required</span>
+      </ion-item>
     </ion-list>
-  <ion-list text-center>
-    <button ion-button round style="width: 175px" (click)="submit()">Next</button>
 
-  </ion-list>
+    <ion-list text-center>
+      <button ion-button round style="width: 175px">Next</button>
+    </ion-list>
+  </form>
 
 </ion-content>

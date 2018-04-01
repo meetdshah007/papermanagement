@@ -1,6 +1,16 @@
 page-contact {
 
   list-style: none;
+  .customer-list{
+    border-bottom: 1px solid $themePrimary !important;
+    .mobile{
+      font-size: 1.2rem;
+      padding: 5px 0px;
+    }
+    .name{
+      text-transform: capitalize;
+    }
+  }
 }
 
 ul{
