@@ -60,7 +60,7 @@ export class ContactPage {
         }
         return data;
       });
-    }else{
+    } else {
       filterList = this.customerData || [];
     }
     this.customerList = filterList;
@@ -79,10 +79,13 @@ export class ContactPage {
       customer_id: cust.customer_id,
       user_id: this.userId
     };
-    this.services.post(`customers/removecustomer.php`, data).subscribe((res: any) => {
-      this.services.presentToast(`Customer account is deleted successfully.`);
-      this.getCustomerList();
-    });
+
+    this.services.alertWithInput('Are you Sure?', null, 'Agree', (retData, scope) => {
+      scope.services.post(`customers/removecustomer.php`, data).subscribe((res: any) => {
+        scope.services.presentToast(`Customer account is deleted successfully.`);
+        scope.getCustomerList();
+      });
+    }, this);
   }
 
   addcustomer() {
