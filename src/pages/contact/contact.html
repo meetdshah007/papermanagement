@@ -34,7 +34,8 @@
 
 <ion-content padding>
 
-  <ion-list *ngIf="customerList.length">
+  <ion-searchbar *ngIf="customerData.length" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+  <ion-list *ngIf="customerData.length">
     <ion-item *ngFor="let cust of customerList" no-lines class="customer-list">
      <span item-start>
        <div class="name">

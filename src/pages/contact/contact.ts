@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {IndexPage} from "../index/index";
-import {RegisterPage} from "../register/register";
+import { IndexPage } from "../index/index";
+import { RegisterPage } from "../register/register";
 import { ServicesProvider } from '../../providers/services/services';
 
 /**
@@ -16,8 +16,10 @@ import { ServicesProvider } from '../../providers/services/services';
   templateUrl: 'contact.html',
 })
 export class ContactPage {
+  searchTerm: string = '';
   userId: string;
-  customerList: object[] = [];
+  customerList: any[] = [];
+  customerData: object[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -26,20 +28,21 @@ export class ContactPage {
   ) {
   }
 
-  ionViewWillEnter(){
-    this.services.getUserData().then(data=>{
+  ionViewWillEnter() {
+    this.services.getUserData().then(data => {
       this.userId = data.user_id;
       this.getCustomerList();
     });
-    
+
   }
 
-  getCustomerList(){
-    this.services.get(`customers/getcustomerlist.php?user_id=${this.userId}`).subscribe((res:any)=>{
-      if(res.success){
+  getCustomerList() {
+    this.services.get(`customers/getcustomerlist.php?user_id=${this.userId}`).subscribe((res: any) => {
+      if (res.success) {
+        this.customerData = res.data.customer_list || [];
         this.customerList = res.data.customer_list || [];
-      }else{
-        this.services.createWaring('Error',res.error);
+      } else {
+        this.services.createWaring('Error', res.error);
       }
     }, (err) => {
       console.log("Error", err);
@@ -48,26 +51,41 @@ export class ContactPage {
     });
   }
 
-  dismiss(){
+  setFilteredItems() {
+    let filterList = [];
+    if (this.searchTerm && this.searchTerm.length) {
+      this.customerData.map((data: any) => {
+        if (data.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) {
+          filterList.push(data);
+        }
+        return data;
+      });
+    }else{
+      filterList = this.customerData || [];
+    }
+    this.customerList = filterList;
+  }
+
+  dismiss() {
     this.navCtrl.setRoot(IndexPage);
   }
 
-  onEdit(cust: any){
+  onEdit(cust: any) {
     this.navCtrl.push(RegisterPage, cust);
   }
 
-  onDelete(cust: any){
+  onDelete(cust: any) {
     let data = {
       customer_id: cust.customer_id,
       user_id: this.userId
     };
-    this.services.post(`customers/removecustomer.php`,data).subscribe((res:any)=>{
+    this.services.post(`customers/removecustomer.php`, data).subscribe((res: any) => {
       this.services.presentToast(`Customer account is deleted successfully.`);
       this.getCustomerList();
     });
   }
 
-  addcustomer(){
+  addcustomer() {
     this.navCtrl.push(RegisterPage)
   }
 
